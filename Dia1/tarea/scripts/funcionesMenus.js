@@ -11,12 +11,11 @@ Seleccione una opción:
 4. Generar reporte de gastos
 5. Salir
 =============================================`); 
+rtaMenuPrincipal = prompt("Elige una opción con su número:");
+
 }
 
-menuPrincipal()
 
-
-// Función para imprimir el menú de listar los gastos
 function listarGastos() {
     console.log(`=============================================
                 Listar Gastos
@@ -28,6 +27,8 @@ Seleccione una opción para filtrar los gastos:
 3. Filtrar por rango de fechas
 4. Regresar al menú principal
 =============================================`); 
+
+rtaListarGastos = prompt("Elige una opción con su número:");
 }
 
 
@@ -43,6 +44,8 @@ Seleccione el periodo de cálculo:
 3. Calcular total mensual
 4. Regresar al menú principal
 =============================================`); 
+
+rtaCalcularGastos = prompt("Elige una opción con su número:");
 }
 
 
@@ -58,6 +61,8 @@ Seleccione el tipo de reporte:
 3. Reporte mensual
 4. Regresar al menú principal
 =============================================`); 
+
+rtaReporteGastos = prompt("Elige una opción con su número:");
 }
 
 
