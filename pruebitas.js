@@ -1,0 +1,6 @@
+
+
+registroDatos();
+
+
+console.log(gastos)
