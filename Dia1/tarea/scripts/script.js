@@ -40,28 +40,37 @@ gastos = [];
 
 // Funcion para registrar nuevos datos
 function nuevoGasto() {
+    banderaGastos = true
 
-    // Pedimos al usuario los datos que necesitamos
-    montico =  (prompt('Ingresa el monto del gasto: ')); 
-    categoriaaa = prompt('Ingresa la categoría: ');
-    descripcionnn = prompt('Ingresa una descripción de tu gasto (opcional):  ');
-    saveOrCancel = prompt('Ingrese S para guardar o C para cancelar: ');
+    while (banderaGastos == true) {
+        // Pedimos al usuario los datos que necesitamos
+        montico = (prompt('Ingresa el monto del gasto: '));
+        categoriaaa = prompt('Ingresa la categoría: ');
+        descripcionnn = prompt('Ingresa una descripción de tu gasto (opcional):  ');
+        saveOrCancel = prompt('Ingrese S para guardar o C para cancelar: ');
 
-    if (saveOrCancel == "S") {
+        if (saveOrCancel == "S") {
             // Creamos un objeto con los datos necesarios y le asignamos el valor que guardaron las anteriores variables
-        gasto = {
-            monto : montico,
-            categoria : categoriaaa,
-            descripcion : descripcionnn
+            gasto = {
+                monto: montico,
+                categoria: categoriaaa,
+                descripcion: descripcionnn
+            }
+
+            // Aquí metemos dentro de "gastos" lo que acabamos de obtener en "gasto"
+            gastos.push(gasto);
+
+
+            // Aquí solo imprimimos este mensaje
+            console.log("Tu gasto ha sido registrado con éxito!", gasto);
         }
+        else {
+            console.log("Cancelado. Tus gastos fueron:");
+            console.log(JSON.stringify(gastos, null, 2));
+            banderaGastos = false
+        }
+    }
 
-        // Aquí metemos dentro de "gastos" lo que acabamos de obtener en "gasto"
-        gastos.push(gasto);
-
-
-        // Aquí solo imprimimos este mensaje
-        console.log("Tu gasto ha sido registrado con éxito!", gasto);
-    }   
 }
 
 
@@ -79,7 +88,7 @@ Seleccione una opción para filtrar los gastos:
 =============================================`);
 
     rtaListarGastos = prompt("Elige una opción con su número:");
-    
+
     // CONDICIONALES PARA LISTAR GASTOS
     if (rtaListarGastos == 1) {
         console.log("Estos son todos tus gastos: Nada por el momento")
@@ -113,7 +122,7 @@ Seleccione el periodo de cálculo:
 =============================================`);
 
     rtaCalcularGastos = prompt("Elige una opción con su número:");
-    
+
     // CONDICIONALES PARA CALCULAR GASTOS
     if (rtaCalcularGastos == 1) {
         console.log("Este es el total de lo que has gastado hoy: $0")
@@ -128,7 +137,7 @@ Seleccione el periodo de cálculo:
         console.log("Regresando al menú principal... (Refresca la página)")
     }
 }
-    
+
 
 // Función para imprimir el menú de generar reporte de gastos
 function reporteGastos() {
