@@ -4,7 +4,7 @@
 
 // Función para imprimir el primer menú que debe ver el usuario
 function menuPrincipal() {
-    console.log(`=============================================
+    rtaMenuPrincipal = prompt(`=============================================
          Simulador de Gasto Diario
 =============================================
 Seleccione una opción:
@@ -42,15 +42,15 @@ gastos = [];
 function nuevoGasto() {
 
     // Pedimos al usuario los datos que necesitamos
-    cantidad = Number(prompt('Ingresa el monto del gasto: ')); 
-    categoria = prompt('Ingresa la categoría: ');
-    descripcion = prompt('Ingresa una descripción de tu gasto (opcional):  ');
+    montico =  (prompt('Ingresa el monto del gasto: ')); 
+    categoriaaa = prompt('Ingresa la categoría: ');
+    descripcionnn = prompt('Ingresa una descripción de tu gasto (opcional):  ');
     saveOrCancel = prompt('Ingrese S para guardar o C para cancelar: ');
 
     if (saveOrCancel == "S") {
             // Creamos un objeto con los datos necesarios y le asignamos el valor que guardaron las anteriores variables
         gasto = {
-            monto : Number(montico),
+            monto : montico,
             categoria : categoriaaa,
             descripcion : descripcionnn
         }
@@ -60,11 +60,8 @@ function nuevoGasto() {
 
 
         // Aquí solo imprimimos este mensaje
-        console.log("Tu gasto ha sido registrado con éxito!");
-    }
-
-
-    
+        console.log("Tu gasto ha sido registrado con éxito!", gasto);
+    }   
 }
 
 
@@ -182,9 +179,4 @@ function salir() {
 
 
 //La página va a cargar y lo primero que el usuario ve es este prompt en ventana
-rtaMenuPrincipal = prompt( "¿Qué deseas hacer?\n" +
-    "1. Registrar nuevo gasto\n" +
-    "2. Ver todos los gastos\n" +
-    "3. Filtrar gastos por categoría\n" +
-    "4. Salir");
-
+menuPrincipal()  
