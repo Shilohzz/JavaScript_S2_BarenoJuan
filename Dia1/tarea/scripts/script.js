@@ -1,5 +1,12 @@
 // ¡¡¡FUNCIONES!!!
 
+function demoSimulador() {
+    booleanito = true
+
+    while (booleanito == true) {
+        menuPrincipal();
+    }
+}
 
 
 // Función para imprimir el primer menú que debe ver el usuario
@@ -18,31 +25,7 @@ Seleccione una opción:
 
     // CONDICIONALES MENÚ PRINCIPAL
     if (rtaMenuPrincipal == 1) {
-        nuevoGasto();
-    }
-    else if (rtaMenuPrincipal == 2) {
-        listarGastos();
-    }
-    else if (rtaMenuPrincipal == 3) {
-        calcularGastos();
-    }
-    else if (rtaMenuPrincipal == 4) {
-        reporteGastos()
-    }
-    else {
-        salir();
-    }
-}
-
-
-// Inicializo un JSON en este mismo script
-gastos = [];
-
-// Funcion para registrar nuevos datos
-function nuevoGasto() {
-    banderaGastos = true
-
-    while (banderaGastos == true) {
+        // Funcion para registrar nuevos datos
         // Pedimos al usuario los datos que necesitamos
         montico = (prompt('Ingresa el monto del gasto: '));
         categoriaaa = prompt('Ingresa la categoría: ');
@@ -67,16 +50,10 @@ function nuevoGasto() {
         else {
             console.log("Cancelado. Tus gastos fueron:");
             console.log(JSON.stringify(gastos, null, 2));
-            banderaGastos = false
         }
     }
-
-}
-
-
-// Función para listar gastos (menú)
-function listarGastos() {
-    console.log(`=============================================
+    else if (rtaMenuPrincipal == 2) {
+        rtaListarGastos = prompt(`=============================================
                 Listar Gastos
 =============================================
 Seleccione una opción para filtrar los gastos:
@@ -87,31 +64,27 @@ Seleccione una opción para filtrar los gastos:
 4. Regresar al menú principal
 =============================================`);
 
-    rtaListarGastos = prompt("Elige una opción con su número:");
 
-    // CONDICIONALES PARA LISTAR GASTOS
-    if (rtaListarGastos == 1) {
-        console.log("Estos son todos tus gastos: Nada por el momento")
+
+        // CONDICIONALES PARA LISTAR GASTOS
+        if (rtaListarGastos == 1) {
+            console.log(`Tus gastos son los siguientes: ` + gastos)
+        }
+        else if (rtaListarGastos == 2) {
+            listarXCategoria = prompt("Ingresa la categoría que deseas filtrar:")
+        }
+        else if (rtaListarGastos == 3) {
+            listarXFechas1 = prompt("Ingresa la fecha inicial:")
+            listarXFechas2 = prompt("Ingresa la fecha final:")
+        }
+        else {
+            console.log("Regresando al menú principal... (Refresca la página)")
+        }
+
     }
-    else if (rtaListarGastos == 2) {
-        listarXCategoria = prompt("Ingresa la categoría que deseas filtrar:")
-    }
-    else if (rtaListarGastos == 3) {
-        listarXFechas1 = prompt("Ingresa la fecha inicial:")
-        listarXFechas2 = prompt("Ingresa la fecha final:")
-    }
-    else {
-        console.log("Regresando al menú principal... (Refresca la página)")
-    }
-}
-
-
-
-
-// Función para imprimir el menú de calcular el total de gastos
-function calcularGastos() {
-    console.log(`=============================================
-          Calcular Total de Gastos
+    else if (rtaMenuPrincipal == 3) {
+        console.log(`=============================================
+        Calcular Total de Gastos
 =============================================
 Seleccione el periodo de cálculo:
 
@@ -121,27 +94,24 @@ Seleccione el periodo de cálculo:
 4. Regresar al menú principal
 =============================================`);
 
-    rtaCalcularGastos = prompt("Elige una opción con su número:");
+        rtaCalcularGastos = prompt("Elige una opción con su número:");
 
-    // CONDICIONALES PARA CALCULAR GASTOS
-    if (rtaCalcularGastos == 1) {
-        console.log("Este es el total de lo que has gastado hoy: $0")
+        // CONDICIONALES PARA CALCULAR GASTOS
+        if (rtaCalcularGastos == 1) {
+            console.log("Este es el total de lo que has gastado hoy: $0")
+        }
+        else if (rtaCalcularGastos == 2) {
+            console.log("Este es el total de tus gastos en la semana: $0")
+        }
+        else if (rtaCalcularGastos == 3) {
+            console.log("Este es el total de tus gastos este mes: $0")
+        }
+        else {
+            console.log("Regresando al menú principal...")
+        }
     }
-    else if (rtaCalcularGastos == 2) {
-        console.log("Este es el total de tus gastos en la semana: $0")
-    }
-    else if (rtaCalcularGastos == 3) {
-        console.log("Este es el total de tus gastos este mes: $0")
-    }
-    else {
-        console.log("Regresando al menú principal... (Refresca la página)")
-    }
-}
-
-
-// Función para imprimir el menú de generar reporte de gastos
-function reporteGastos() {
-    console.log(`=============================================
+    else if (rtaMenuPrincipal == 4) {
+        console.log(`=============================================
            Generar Reporte de Gastos
 =============================================
 Seleccione el tipo de reporte:
@@ -152,40 +122,49 @@ Seleccione el tipo de reporte:
 4. Regresar al menú principal
 =============================================`);
 
-    rtaReporteGastos = prompt("Elige una opción con su número:");
+        rtaReporteGastos = prompt("Elige una opción con su número:");
 
-    // CONDICIONALES PARA REPORTAR GASTOS
-    if (rtaReporteGastos == 1) {
-        console.log("Tu reporte diario ha sido realizado con éxito")
+        // CONDICIONALES PARA REPORTAR GASTOS
+        if (rtaReporteGastos == 1) {
+            console.log("Tu reporte diario ha sido realizado con éxito")
+        }
+        else if (rtaReporteGastos == 2) {
+            console.log("Tu reporte semanal ha sido realizado con éxito")
+        }
+        else if (rtaReporteGastos == 3) {
+            console.log("Tu reporte mensual ha sido realizado con éxito")
+        }
+        else {
+            console.log("Regresando al menú principal... (Refresca la página)")
+        }
     }
-    else if (rtaReporteGastos == 2) {
-        console.log("Tu reporte semanal ha sido realizado con éxito")
-    }
-    else if (rtaReporteGastos == 3) {
-        console.log("Tu reporte mensual ha sido realizado con éxito")
+    else if (rtaMenuPrincipal == 5) {
+        rtaSalir = prompt("¿Desea salir del programa? (S/N):");
+
+        // CONDICIONALES PARA SALIR
+        if (rtaSalir == "S") {
+            console.log("Chauuuu");
+        }
+        else {
+            console.log("Que bueno tenerte aquí. ¿Qué quieres hacer?")
+        }
     }
     else {
-        console.log("Regresando al menú principal... (Refresca la página)")
+        console.log("Ingresa una opción válida...")
     }
 }
 
 
-// Función para preguntar al usuario si desea salir del programa
-function salir() {
-    rtaSalir = prompt("¿Desea salir del programa? (S/N):");
-
-    // CONDICIONALES PARA SALIR
-    if (rtaSalir == "S") {
-        console.log("Chauuuu")
-    }
-    else {
-        console.log("Que bueno tenerte aquí. ¿Qué quieres hacer?")
-    }
-}
+// Inicializo un JSON en este mismo script
+gastos = [];
 
 
 
 
 
-//La página va a cargar y lo primero que el usuario ve es este prompt en ventana
-menuPrincipal()  
+
+demoSimulador()
+
+
+
+
