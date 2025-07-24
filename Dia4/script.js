@@ -121,7 +121,18 @@ if (rtaMenuPrincipal == 1) {
         for (let i = 0; i < ingredientes.length; i++) {
             nuevosIngredientes += `\n${i+1} - ${ingredientes[i].nombre} -  ${ingredientes[i].descripcion} - ${ingredientes[i].precio} - ${ingredientes[i].stock}`;
         }
+
+        alert("Lista de ingredientes actualizada a continuación --->")
         alert(nuevosIngredientes)
+    }
+    else if (rtaIngredientes == 3) {
+        let deleteIng = parseInt(prompt("Ingresa el número del ingrediente a eliminar: ")) - 1
+
+        ingredientes.splice(deleteIng, 1)
+
+        alert(JSON.stringify(ingredientes, null, 2))
+
+        
     }
 }
 
