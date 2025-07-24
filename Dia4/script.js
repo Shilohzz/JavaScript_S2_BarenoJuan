@@ -206,4 +206,69 @@ else if (rtaMenuPrincipal == 2) {
     }
 
 }
+else if (rtaMenuPrincipal == 3) {
+    let rtaHamburguesas = parseInt(prompt(`
+        1. Ver hamburguesas
+        2. Añadir hamburguesas
+        3. Eliminar hamburguesas
+        4. Modificar hamburguesas`));
+
+    if (rtaHamburguesas == 1) {
+
+        let allHamburguesas = ""
+        for (let i = 0; i < hamburguesas.length; i++) {
+            allHamburguesas += `${hamburguesas[i].nombre} \n ${hamburguesas[i].categoria} \n${hamburguesas[i].ingredientes} \n${hamburguesas[i].precio} \n${hamburguesas[i].chef}\n\n`
+        }
+        alert(allHamburguesas) // Si le pongo JSON.stringify, va a poner texto plano y no me lee mis saltos de línea "\n". Por eso así.
+    }    
+    else if (rtaHamburguesas == 2) {
+        let nombreH = prompt("Ingresa el nombre de la hamburguesa: ");
+        let categoriaH = prompt("Ingresa la categoría de la hamburguesa: ");
+        let ingredientesH = prompt("Ingresa los ingredientes: ");
+        let precioH = parseInt(prompt("Ingresa el precio: "));
+        let chefH = prompt("Ingresa el nombre el chef: ");
+
+        let nuevaH = {
+            nombre : nombreH,
+            categoria: categoriaH,
+            ingredientes: ingredientesH,
+            precio: precioH,
+            chef: chefH
+        }
+
+        hamburguesas.push(nuevaH)
+
+        alert(JSON.stringify(hamburguesas))
+    }
+    else if (rtaHamburguesas == 3) {
+        let eliminarH = parseInt(prompt("Ingresa el indice de la hamburguesa a eliminar: ")) -1;
+
+        hamburguesas.splice(eliminarH, 1);
+
+        alert(JSON.stringify(hamburguesas));
+    }
+    else if (rtaHamburguesas == 4) {
+        let modificarH = parseInt(prompt("Ingresa el indice de la hamburguesa a modificar: ")) -1;
+
+        let newNombreH = prompt("Ingresa el nombre de la hamburguesa: ");
+        let newCategoriaH = prompt("Ingresa la categoría: ");
+        let newIngredientesH = prompt("Ingresa los ingredientes: ");
+        let newPrecioH = parseInt(prompt("Ingresa el nuevo precio: "));
+        let newChefH = prompt("Ingresa el nuevo chef: ");
+
+        let newH = {
+            nombre: newNombreH,
+            categoria: newCategoriaH,
+            ingredientes: newIngredientesH,
+            precio: newPrecioH,
+            chef: newChefH
+        }
+        for (let i = 0; i < hamburguesas.length; i++) {
+            if (modificarH == i) {
+                hamburguesas[i] = newH
+            }
+        }
+        alert(JSON.stringify(hamburguesas, null, 2));
+    }
+}
 
