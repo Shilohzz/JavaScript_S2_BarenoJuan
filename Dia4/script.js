@@ -134,5 +134,24 @@ if (rtaMenuPrincipal == 1) {
 
         
     }
+    else if (rtaIngredientes == 4) {
+        let ingModificar = parseInt(prompt("Ingresa el índice del ingrediente a modificar: ")) - 1
+
+        let nombreModificar = prompt("Ingresa el nuevo nombre: ")
+        let descripcionModificar = prompt("Ingresa la nueva descripción: ")
+        let precioModificar = parseInt(prompt("Ingresa el nuevo precio: "))
+        let stockModificar = parseInt(prompt("Ingresa el nuevo stock: "))
+
+        for (let i = 0; i < ingredientes.length; i++) {
+            if (i == ingModificar) {
+                ingredientes[i].nombre = nombreModificar
+                ingredientes[i].descripcion = descripcionModificar
+                ingredientes[i].precio = precioModificar
+                ingredientes[i].stock = stockModificar
+
+                alert(JSON.stringify(ingredientes, null, 2));
+            }
+        }
+    }
 }
 
