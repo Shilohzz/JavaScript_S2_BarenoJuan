@@ -154,4 +154,56 @@ if (rtaMenuPrincipal == 1) {
         }
     }
 }
+else if (rtaMenuPrincipal == 2) {
+    let rtaCategorias = prompt(`
+        1. Ver categorías
+        2. Añadir categorías
+        3. Eliminar categorías
+        4. Modificar categorías`);
+    
+    if (rtaCategorias == 1) {
+        let listaCategorias = []
+        for (let i = 0; i < categorias.length; i++) {
+            listaCategorias += `\n ${i+1} ${categorias[i].nombre}  -  ${categorias[i].descripcion}`
+        }
+        alert(listaCategorias)
+    }
+    else if (rtaCategorias == 2) {
+
+        let newCategoria = prompt("Ingresa la categoria: ")
+        let nuevaDescripcion = prompt("Ingresa la descripción: ")
+
+        let nuevaCategoria = {
+            categoria: newCategoria,
+            descripcion: nuevaDescripcion
+        }
+
+        categorias.push(nuevaCategoria);
+
+        alert(JSON.stringify(categorias, null, 2));
+    }
+    else if (rtaCategorias == 3) {
+        let categoriaDelete = parseInt(prompt("Ingresa el índice de la categoría a eliminar: ")) - 1;
+        
+        categorias.splice(categoriaDelete, 1);
+
+        alert(JSON.stringify(categorias))
+    }
+    else if (rtaCategorias == 4) {
+        let categoriaModificar = parseInt(prompt("Ingresa el índice de la categoría a modificar: ")) -1;
+
+        let nuevaCategoria = prompt("Ingresa la nueva categoría: ");
+        let categoriaDescripcion = prompt("Ingresa una descripción");
+        for (let i = 0; i < categorias.length; i++) {
+            if (i == categoriaModificar) {
+                categorias[i].nombre = nuevaCategoria
+                categorias[i].descripcion = categoriaDescripcion
+
+                alert(JSON.stringify(categorias, null, 2));
+            }
+        }
+
+    }
+
+}
 
