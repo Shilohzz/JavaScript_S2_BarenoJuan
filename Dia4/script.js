@@ -1,3 +1,10 @@
+// ####################
+// ######DIA 4#########
+// ####################
+// ####################
+
+
+
 // Inicializamos las listas que contendrán los ingredientes, categorías y demás.
 let ingredientes = [
     {
@@ -162,9 +169,9 @@ else if (rtaMenuPrincipal == 2) {
         4. Modificar categorías`);
     
     if (rtaCategorias == 1) {
-        let listaCategorias = []
+        let listaCategorias = ""
         for (let i = 0; i < categorias.length; i++) {
-            listaCategorias += `\n ${i+1} ${categorias[i].nombre}  -  ${categorias[i].descripcion}`
+            listaCategorias += `${i+1} ${categorias[i].nombre}  -  ${categorias[i].descripcion}\n\n`
         }
         alert(listaCategorias)
     }
@@ -271,4 +278,58 @@ else if (rtaMenuPrincipal == 3) {
         alert(JSON.stringify(hamburguesas, null, 2));
     }
 }
+else if (rtaMenuPrincipal == 4) { //Puse eso de abajo así para que se alineara con las otras opciones en el prompt
+    let rtaChef = prompt(`        1. Ver Chef 
+        2. Añadir Chef
+        3. Eliminar Chef
+        4. Modificar Chef`);
+    
 
+    let allChef = ""
+    if (rtaChef == 1) {
+        
+
+        for (let i = 0; i < chefs.length; i++) {
+            allChef += `${chefs[i].nombre} - ${chefs[i].especialidad}.\n\n`
+        }
+        alert(allChef);
+    }
+    else if (rtaChef == 2) {
+
+        let chefsito = prompt("Ingresa el nombre del chef: ");
+        let especiality = prompt("Ingresa la especialidad del chef");
+
+        let nuevoChef = {
+            nombre: chefsito,
+            especialidad:especiality
+        }
+
+        chefs.push(nuevoChef);
+
+        alert(JSON.stringify(chefs, null, 2));
+    }
+    else if (rtaChef == 3) {
+        let chefDel = parseInt(prompt("Ingresa el índice del chef a eliminar: ")) -1;
+
+        chefs.splice(chefDel, 1);
+
+        alert(JSON.stringify(chefs, null, 2));
+    }
+    else if (rtaChef == 4) {
+        let nChef = parseInt(prompt("Ingresa el índice del chef a modificar: ")) -1;
+
+        let nombreChef = prompt("Ingresa el nombre del chef: ");
+        let especialidaddd = prompt("Ingresa la especialidad del chef: ");
+
+        for (let i = 0; i < chefs.length; i++){
+            if (nChef == i) {
+                chefs[i].nombre = nombreChef
+                chefs[i].especialidad = especialidaddd
+
+                alert(JSON.stringify(chefs, null, 2));
+            }
+        }
+    }
+}
+
+// DESARROLLADO POR: JUAN PABLO BAREÑO SIERRA
