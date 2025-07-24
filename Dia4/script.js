@@ -75,11 +75,11 @@ let chefs = [
 ]
 
 
-//Creamos un menú principal que se muestre en forma de prompt, para saber cuál opción desea usar el usuario.
 
 // Inicializo una bandera para frenar el bucle cuando sea necesario.
 booleanito = true;
 
+//Creamos un menú principal que se muestre en forma de prompt, para saber cuál opción desea usar el usuario.
 rtaMenuPrincipal = prompt(`1. Ingredientes
 2. Categorías
 3. Hamburguesas
@@ -94,9 +94,34 @@ if (rtaMenuPrincipal == 1) {
     4. Modificar ingredientes`);
 
     if (rtaIngredientes == 1){
+        
+        let allIngredientes = ""
         for (let i = 0; i < ingredientes.length; i++) {
-            alert(JSON.stringify(ingredientes[i], null, 2))
+            allIngredientes += `\n${i+1} - ${ingredientes[i].nombre} - ${ingredientes[i].descripcion} - ${ingredientes[i].precio} - ${ingredientes[i].stock}`;
+            
         }
+        alert(allIngredientes);
+    }
+    else if (rtaIngredientes == 2) {
+        let nombreIng = prompt("Ingresa el nombre del ingrediente: ")
+        let descripcionIng = prompt("Ingresa una descripción del ingrediente: ")
+        let precioIng = parseInt(prompt("Ingresa el precio del ingredente: "))
+        let stockIng = parseInt(prompt("Ingresa el stock del ingrediente: "))
+
+        let nuevoIng = {
+            nombre: nombreIng,
+            descripcion: descripcionIng,
+            precio: precioIng,
+            stock: stockIng
+        }
+        
+        ingredientes.push(nuevoIng);
+
+        let nuevosIngredientes = `\n Nombre  -  Descripción  -  Precio  -  Stock`
+        for (let i = 0; i < ingredientes.length; i++) {
+            nuevosIngredientes += `\n${i+1} - ${ingredientes[i].nombre} -  ${ingredientes[i].descripcion} - ${ingredientes[i].precio} - ${ingredientes[i].stock}`;
+        }
+        alert(nuevosIngredientes)
     }
 }
 
