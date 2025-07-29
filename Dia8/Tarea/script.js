@@ -16,7 +16,7 @@ function buscarPlaneta() {
 
                 const daticos = JSON.parse(xhr.responseText); // Parseo el JSON obtenido, a texto y lo guardo en una variable (daticos)
 
-                alert("El personaje es: " + daticos["results"][planetaBuscar]["name"] + "\n" 
+                alert("El planeta es: " + daticos["results"][planetaBuscar]["name"] + "\n" 
                      + "Periodo de rotación: " + daticos["results"][planetaBuscar]["rotation_period"] + "\n"
                      + "Periodo orbital: " + daticos["results"][planetaBuscar]["orbital_period"] + "\n"
                      + "Diámetro: " + daticos["results"][planetaBuscar]["diameter"] + "\n"
