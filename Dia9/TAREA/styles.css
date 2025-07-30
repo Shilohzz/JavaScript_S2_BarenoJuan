@@ -24,16 +24,40 @@
     position: absolute;
     width: 100px;
     height: 100px;
-    bottom: 350px;
+    bottom: 334px;
     left: 140px;
     background-color: blueviolet;
 }
 
 .inputAtari {
     position: absolute;
-    bottom: 200px;
+    bottom: 176px;
     left: 48px;
     width: 290px;
     height: 40px;
     border-radius: 5px;
+}
+
+.bPrev{
+    position: absolute;
+    background-color: rgb(73, 73, 73);
+    color: white;
+    width: 152px;
+    height: 47px;
+    border-radius: 5px;
+    bottom: 44px;
+    right: 231px;
+    font-size: 19px;
+}
+
+.bNext {
+    position: absolute;
+    background-color: rgb(73, 73, 73);
+    color: white;
+    width: 152px;
+    height: 47px;
+    border-radius: 5px;
+    bottom: 44px;
+    right: 72px;
+    font-size: 19px;
 }
