@@ -50,3 +50,14 @@ body {
     top: 28rem;
     color: rgb(209, 200, 200);
 }
+
+.play:hover {
+    text-decoration: underline;
+    text-decoration-color: yellow;
+}
+
+.instrucciones:hover{ 
+    text-decoration: underline;
+    text-decoration-color: yellow;
+}
+
