@@ -1,0 +1,30 @@
+body {
+    background-image: url(../IMG/poker-table-in-cartoons-0qeb8qs4c2pcxjd8.webp);
+
+    background-repeat: no-repeat;
+
+    background-size: cover;
+}
+
+.Padre {
+    text-align: center;
+    background-color: pink;
+    width: 65vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15rem;
+    
+}
+
+.instructions {
+    font-size: 4rem;
+
+    /*Con esto lo que hago es centrar la tabla de instrucciones*/
+    margin-left: auto;
+    margin-right: auto;
+     
+}
+
+.instructions th {
+    padding-bottom: 2rem;
+}
