@@ -32,8 +32,8 @@ function buscarPokemon(pokemonValue) {
             pokemonImagen.appendChild(imgPokemon);
 
             // Limpio el texto del nombre yu el id también
-            pokemonNombre.innerText = daticos.name;
-            pokemonId.innerText = `- ${daticos.id}`
+            pokemonNombre.innerText = daticos["name"];
+            pokemonId.innerText = `- ${daticos["id"]}`
 
             pokeID = daticos.id;
             

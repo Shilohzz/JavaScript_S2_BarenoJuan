@@ -1,0 +1,52 @@
+/*FUENTES*/
+@font-face {
+    font-family: "guerra";
+    src: url(./Fonts/Shut\'Em\ Down.ttf);
+}
+
+@font-face {
+    font-family: "gameOver";
+    src: url(./Fonts/chp-fire.ttf);
+}
+
+@font-face {
+    font-family: "PlayAndI";
+    src: url(./Fonts/DUE.TTF);
+}
+* {
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+
+
+/*STYLES*/
+body {
+    background-image: url(./IMG/fondoJuegoCartas.jpg);
+    overflow: hidden;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.guerra {
+    font-family: "guerra";
+    position: relative;
+    font-size: 70px;
+    text-align: center;
+    top: 18rem;
+    color: rgb(209, 200, 200)
+}
+
+.PyI {
+    display: flex;
+    flex-direction: column;
+    gap: 49px;
+    font-family: "PlayAndI";
+    position: relative;
+    font-size: 70px;
+    text-align: center;
+    top: 28rem;
+    color: rgb(209, 200, 200);
+}
