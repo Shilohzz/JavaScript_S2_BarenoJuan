@@ -43,7 +43,12 @@ body {
     left: 23.5rem;
     top: 46rem;
     border-radius: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 47rem;
 }
+
 
 
 a:active, a:focus {

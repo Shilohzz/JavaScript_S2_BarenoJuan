@@ -26,7 +26,6 @@ function iniciarJuego() {
 
             // Guardo la respuesta de la API en mi variable "daticos"
             const daticos = xhr.response;
-            console.log("mazo de 56 cartas creado")
 
 
             // Guardo el id de la baraja en esta variable
@@ -43,7 +42,7 @@ function iniciarJuego() {
     xhr.send();
 }
 
-function mostrarMazo(contenedorID) {
+function mostrarMazo(contenedorID, jugador) {
     
     // Creo una variable para obtener el div donde pondré la imagen de las cartas.
     const contenedor = document.getElementById(contenedorID);
@@ -56,15 +55,20 @@ function mostrarMazo(contenedorID) {
     imgMazo.src = "https://deckofcardsapi.com/static/img/back.png";
 
     imgMazo.classList.add('mazo-visual');
+
+    imgMazo.id = `mazo-${jugador}`;
     
     contenedor.appendChild(imgMazo);
+
+    // Tengo que poner un escuchador de eventos para cuando el jugador quiera lanzar una carta.
+    imgMazo.addEventListener('click', () => jugarCarta(jugador))
 }
 
 
 function barajeo(deckID) {
     const xhr = new XMLHttpRequest();
 
-    const url = `https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=56`
+    const url = `https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=54`
 
     xhr.open("GET", url);
 
@@ -92,5 +96,51 @@ function barajeo(deckID) {
     xhr.send();
 }
 
+function jugarCarta() {
+    let cartaJugada; 
+    let contenedorMesa;
+    let arrayCartas; 
 
+    if (jugador === 1) {
+        if (cartas1.length > 0 ) {
+
+            // Acá lo que hago es sacar la primera carta que tengo en la baraja 
+            cartaJugada = cartas1.shift();
+
+            contenedorMesa = document.getElementById('tiroUno');
+
+            arrayCartas = cartas1;
+
+        }
+        else {
+            alert('Game Over');
+        }
+    }
+    else if (jugador === 2) {
+        if (cartas2 > 0) {
+
+            // con esto saco la primera carta del jugador 2
+            cartaJugada = cartas2.shift();
+
+            contenedorMesa = document.getElementById('tiroDos');
+            arrayCartas = cartas2;
+        }
+        else {
+            alert('Game Over');
+            return;
+        }
+    }
+
+    contenedorMesa.innerHTML = '';
+    const imgCarta = document.createElement('img');
+
+    imgCarta.src = cartaJugada.image;
+    imgCarta.classList.add('carta-en-mesa');
+    contenedorMesa.appendChild(imgCarta);
+    
+    const contenedorMazo = document.getElementById(`mazo-${jugador}`);
+    if (arrayCartas === 0) {
+        contenedorMazo.innerHTML = '';
+    }
+}
 iniciarJuego();
