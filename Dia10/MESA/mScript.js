@@ -43,6 +43,24 @@ function iniciarJuego() {
     xhr.send();
 }
 
+function mostrarMazo(contenedorID) {
+    
+    // Creo una variable para obtener el div donde pondré la imagen de las cartas.
+    const contenedor = document.getElementById(contenedorID);
+
+    // Acá estoy vaciando esa variable por si llegara a tener algún tipo de dato adentro
+    contenedor.innerHTML = '';
+
+    const imgMazo = document.createElement('img');
+
+    imgMazo.src = "https://deckofcardsapi.com/static/img/back.png";
+
+    imgMazo.classList.add('mazo-visual');
+    
+    contenedor.appendChild(imgMazo);
+}
+
+
 function barajeo(deckID) {
     const xhr = new XMLHttpRequest();
 
@@ -63,6 +81,9 @@ function barajeo(deckID) {
             console.log(`Cartas del jugador 2: `, cartas2);
 
             console.log("El reparto ha sido completado, listos para empezar!");
+
+            mostrarMazo('mazoUno');
+            mostrarMazo('mazoDos');
         }
         else {
             console.error('Error al repartir las cartas.');

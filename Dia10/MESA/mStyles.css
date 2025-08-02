@@ -35,6 +35,16 @@ body {
     border-radius: 9rem;
 }
 
+.cartasP {
+    background-color: #0000005c;
+    width: 60vw;
+    height: 13vw;
+    position: absolute;
+    left: 23.5rem;
+    top: 46rem;
+    border-radius: 4rem;
+}
+
 
 a:active, a:focus {
     /*Encontré esto, lo que hace es quitar ese contorno azul*/
