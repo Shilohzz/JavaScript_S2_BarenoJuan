@@ -66,4 +66,10 @@ body {
     text-decoration: none;
 }
 
+a:active, a:focus {
+    /*Encontré esto, lo que hace es quitar ese contorno azul*/
+    /*Que aparece cuando se presiona un hipervinculo*/
+    -webkit-tap-highlight-color: transparent !important;
+}
+
 

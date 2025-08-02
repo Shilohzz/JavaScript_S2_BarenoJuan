@@ -34,3 +34,26 @@ body {
     height: 13rem;
     border-radius: 9rem;
 }
+
+
+a:active, a:focus {
+    /*Encontré esto, lo que hace es quitar ese contorno azul*/
+    /*Que aparece cuando se presiona un hipervinculo*/
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+.retornoMesa {
+    display: flex;
+    background-color: white;
+    width: 175px;
+    height: 175px;
+    border-radius: 20rem;
+    position: absolute;
+    left: 3rem;
+    top: 2rem;
+}
+
+#retornoMesa {
+    width: 11rem;
+    position: absolute;
+}
