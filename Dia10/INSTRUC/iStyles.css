@@ -12,8 +12,10 @@ body {
     width: 65vw;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 15rem;
-    border-radius: 18rem;
+    margin-top: 13vh;
+    border-radius: 288px;
+    border: 15px solid yellow;
+    box-shadow: 0 0 80px yellow;
 }
 
 .instructions {
@@ -28,3 +30,14 @@ body {
 .instructions th {
     padding-bottom: 1rem;
 }
+
+#backImg {
+    width: 10rem;
+    height: 10rem;
+    position: absolute;
+    top: 17vh;
+    left: 22vw;
+    border-bottom: 5px yellow;
+}
+
+
