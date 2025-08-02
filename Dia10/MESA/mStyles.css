@@ -18,3 +18,19 @@ body {
     border: 15px solid yellow;
     box-shadow: 0 0 80px yellow;
 }
+
+#userUno {
+    position: relative;
+    left: 156rem;
+    top: 4rem;
+    height: 13rem;
+    border-radius: 9rem;
+}
+
+#userDos {
+    position: absolute;
+    left: 7rem;
+    top: 4rem;
+    height: 13rem;
+    border-radius: 9rem;
+}
