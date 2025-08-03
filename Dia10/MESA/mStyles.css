@@ -50,8 +50,21 @@ body {
 }
 
 .cartasTiradas {
-    display: flex;
+    position: relative;
+        left: 70rem;
+        top: 9rem;
 }
+
+#tiroUno {
+    position: absolute;
+    
+}
+
+#tiroDos {
+    position: absolute;
+    left: 20rem;
+}
+
 
 
 a:active, a:focus {
@@ -77,10 +90,9 @@ a:active, a:focus {
 }
 
 .carta-en-mesa {
-    width: 100px; /* Tamaño de la carta */
-    height: 140px;
-    border: 3px solid black;
-    border-radius: 8px; /* Bordes redondeados */
+    width: 12.5rem;       
+    height: 17.5rem;      
+    
 }
 
 #mensaje-ronda {
@@ -88,4 +100,9 @@ a:active, a:focus {
     font-size: 8rem;
     width: 90rem;
     left: 41rem;
+}
+
+.mensajito {
+    text-align: center;
+    justify-content: center;
 }
