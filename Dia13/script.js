@@ -1,29 +1,78 @@
-document.getElementById('botonBuscar').addEventListener('click', function() {
-    const superheroeName = document.getElementById('buscarSuper').value.trim();
-    const result = document.getElementById('resultado');
-    
-    const miToken = 'e4deed2a223629016205bfec2fafb418';
-    const urlApi = `https://superheroapi.com/api/${miToken}/search/${superheroeName}`;
-    
-    // Usamos un proxy diferente que no da problemas de activación
-    const urlFinal = `https://api.allorigins.win/get?url=${encodeURIComponent(urlApi)}`;
+let nombreHero = "";
 
-    const xhr = new XMLHttpRequest();
-    
-    xhr.open('GET', urlFinal, true);
 
-    xhr.onload = function() {
-        const data = JSON.parse(xhr.responseText);
-        
-        // El nuevo proxy devuelve la respuesta real de la API dentro de 'contents'
-        const apiResponse = JSON.parse(data.contents);
 
-        if (apiResponse.response === 'success' && apiResponse.results.length > 0) {
-            result.textContent = apiResponse.results[0].name;
-        } else {
-            result.textContent = 'No se encontró el superhéroe.';
+
+// Función para obtener el dato del input
+const botonBusqueda = document.querySelector('.botonBuscar');
+
+botonBusqueda.addEventListener('click', function(event){
+
+    event.preventDefault();
+
+    const datosInput = document.querySelector('.buscarHero').value;
+
+    nombreHero = datosInput; 
+
+    getSH();
+})
+
+
+async function getSH() {
+    try {
+
+        let apiUrl = `https://www.superheroapi.com/api.php/e4deed2a223629016205bfec2fafb418/search/${nombreHero}`;
+
+        const respuestaApi = await fetch(apiUrl, {
+            method:'GET'
+        })
+
+        const {results} = await respuestaApi.json();
+
+        for (let i = 0; i < results.length; i++) {
+            makeSH(results[i])
         }
-    };
+
+    } catch(error) {
+        console.error(error.message);   
+    }
+}
+
+
+
+function makeSH(superHero){
+
+    const containerHero = document.querySelector('.containerHero');
+    const {name} = superHero;
+    const {gender} = superHero.appearance;
+    const {url} = superHero.image;
     
-    xhr.send();
-});
+    
+    const titleHero = document.createElement('h4');
+    titleHero.textContent = name;
+
+    const genderHero = document.createElement('p');
+    genderHero.textContent = gender;
+
+    const imgHero = document.createElement('img');
+    imgHero.src = url;
+
+
+    const cardHero = document.createElement('div');
+    cardHero.appendChild(titleHero);
+    cardHero.appendChild(genderHero);
+    cardHero.appendChild(imgHero); 
+    cardHero.style.backgroundColor = 'gray';
+    
+    containerHero.appendChild(cardHero);
+}
+
+
+
+
+
+
+
+
+
+
