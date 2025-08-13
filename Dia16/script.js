@@ -3,29 +3,36 @@ document.addEventListener('DOMContentLoaded',()=>{
     const taskInput = document.getElementById('taskInput');
     const addTaskButton = document.getElementById('addTaskButton');
 
-    
     async function fetchData(){
-        const res =  await fetch('https://689a16fffed141b96ba1d3ac.mockapi.io/api/tareas/tarea');
+        const res =  await fetch('https://689a16fffed141b96ba1d3ac.mockapi.io/api/tareas/tarea',{
+            method: 'GET',
+            headers :{
+                'Content-Type':'application/json'
+            }
+        });
+
+
         let data = await res.json();
         return data;
     }
 
-
     async function addNewTask(){
-        const task = taskInput.ariaValueMax;
+        const task = taskInput.value;
         console.log(task);
         if (task.trim()==='') return;
-        await fetch('https://689a16fffed141b96ba1d3ac.mockapi.io/api/tareas/tarea', {
-            method:'POST',
-            headers: {
+        await fetch('https://689a16fffed141b96ba1d3ac.mockapi.io/api/tareas/tarea',{
+            method: 'POST',
+            headers :{
                 'Content-Type':'application/json'
             },
-            body:JSON.stringify ({
-                task, status: 'On hold'
+            body:JSON.stringify({
+                task,status:'On hold'
             })
-        })
+        });
+        taskInput.value='';
+        const data = await fetchData();
+        displayCapsula(data);
     }
-
 
     //console.log(fetchData());
     function displayCapsula(capsula){
@@ -36,14 +43,14 @@ document.addEventListener('DOMContentLoaded',()=>{
                 capDiv.classList.add('capsulaNegativa');
                 capDiv.innerHTML =`
                 <div class="infoTextNegativo">
-                <p>${cap.task}</p>
+                <p>${cap["task"]}</p>
             </div>
             <div class="botones">
                 <div class="terminadoNegativo">
-                    <img src="./storage/img/pngwing.com (2).png" alt="">
+                    <img src="./storage/img/pngwing.com (2).png" data-id="${cap["id"]}" alt="" class='completado'>
                 </div>
                 <div class="eliminadoNegativo">
-                    <img src="./storage/img/pngwing.com (4).png" alt="">
+                    <img src="./storage/img/pngwing.com (4).png" data-id="${cap["id"]}" alt="" class='eliminado'>
                 </div>
             </div>
                 `
@@ -52,22 +59,53 @@ document.addEventListener('DOMContentLoaded',()=>{
                 capDiv.innerHTML=`
                  <div class="capsula">
             <div class="infoText">
-                <p>${cap.task}</p>
+                <p>${cap["task"]}</p>
             </div>
             <div class="botones">
                 <div class="terminado">
-                    <img src="./storage/img/pngwing.com (2).png" alt="">
+                    <img src="./storage/img/pngwing.com (2).png" data-id="${cap["id"]}" alt="" class='completado'>
                 </div>
-                <div class="eliminado">
-                    <img src="./storage/img/pngwing.com (4).png" alt="">
+                <div class="eliminar">
+                    <img src="./storage/img/pngwing.com (4).png" data-id="${cap["id"]}" alt="" class='eliminado'>
                 </div>
             </div>`
             }
             datosContenedor.appendChild(capDiv);
         });
+        document.querySelectorAll('.completado').forEach(button => {
+                button.addEventListener('click',botonCompletado);
+        });
+        document.querySelectorAll('.eliminado').forEach(button => {
+                button.addEventListener('click',botonEliminado);
+        });
     }
     fetchData().then(data =>{
         displayCapsula(data);
-    })
-    addTaskButton.addEventListener('click', addNewTask);
+    });
+    addTaskButton.addEventListener('click',addNewTask);
+    async function botonCompletado(){
+        const id = event.target.getAttribute('data-id');
+        await fetch(`https://689a16fffed141b96ba1d3ac.mockapi.io/api/tareas/tarea/${id}`,{
+            method: 'PUT',
+            headers :{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({
+                status:'ready'
+            })
+        });
+        const data = await fetchData();
+        displayCapsula(data);
+    }
+    async function botonEliminado(){
+                const id = event.target.getAttribute('data-id');
+        await fetch(`https://689a16fffed141b96ba1d3ac.mockapi.io/api/tareas/tarea/${id}`,{
+            method: 'DELETE'
+        });
+        const data = await fetchData();
+        displayCapsula(data);
+    }
 });
+
+
+// Neccesito
